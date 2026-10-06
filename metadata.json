@@ -1,0 +1,6 @@
+{
+  "name": "DompetKu - Budget Tracker Harian",
+  "description": "Aplikasi pelacak anggaran dan keuangan harian modern dengan diagram lingkaran sisa saldo dan ekspor laporan CSV.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
