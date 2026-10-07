@@ -341,7 +341,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-100 py-0 sm:py-6 flex flex-col items-center justify-center">
+    <div className="min-h-[100dvh] bg-slate-100 py-0 sm:py-6 flex flex-col items-center justify-start sm:justify-center">
       {/* Top Desktop Controls Bar (only visible on sm+ screens) */}
       <header className="hidden sm:flex items-center justify-between w-full max-w-4xl px-4 mb-4">
         <div className="flex items-center gap-2">
@@ -399,7 +399,7 @@ export default function App() {
         }`}
       >
         {/* Mobile Device Status Bar (React Native feel) */}
-        <div className="sticky top-0 z-30 bg-white/95 backdrop-blur-md px-6 pt-3 pb-2 border-b border-slate-100/80 flex items-center justify-between">
+        <div className="sticky top-0 z-30 bg-white/95 backdrop-blur-md px-6 pt-[max(0.75rem,env(safe-area-inset-top))] pb-2 border-b border-slate-100/80 flex items-center justify-between">
           {/* React Native Dynamic Island / Speaker Pill on mobile frame */}
           {isPhoneFrame && (
             <div className="hidden sm:block absolute left-1/2 -translate-x-1/2 top-2.5 w-24 h-4 bg-slate-900 rounded-full" />
