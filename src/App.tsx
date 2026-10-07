@@ -394,8 +394,8 @@ export default function App() {
       <div
         className={`w-full transition-all duration-300 relative ${
           isPhoneFrame
-            ? 'max-w-[440px] sm:rounded-[44px] sm:border-[10px] sm:border-slate-850 sm:shadow-2xl bg-white min-h-screen sm:min-h-[820px] sm:max-h-[890px] flex flex-col overflow-hidden ring-1 sm:ring-slate-700/20'
-            : 'max-w-4xl bg-white sm:rounded-3xl border sm:border-slate-200/80 shadow-md min-h-screen sm:min-h-auto flex flex-col overflow-hidden'
+            ? 'max-w-[440px] sm:rounded-[44px] sm:border-[10px] sm:border-slate-850 sm:shadow-2xl bg-white h-[100dvh] sm:h-[820px] sm:max-h-[890px] flex flex-col overflow-hidden ring-1 sm:ring-slate-700/20'
+            : 'max-w-4xl bg-white sm:rounded-3xl border sm:border-slate-200/80 shadow-md h-[100dvh] sm:h-auto sm:min-h-screen flex flex-col overflow-hidden'
         }`}
       >
         {/* Mobile Device Status Bar (React Native feel) */}
@@ -443,12 +443,12 @@ export default function App() {
         </div>
 
         {/* Scrollable Content Viewport */}
-        <main className="flex-1 overflow-y-auto no-scrollbar p-4 pb-24">
+        <main className="flex-1 min-h-0 overflow-y-auto no-scrollbar p-4 pb-24">
           {renderTabContent()}
         </main>
 
         {/* React Native Style Sticky Bottom Navigation Bar */}
-        <nav className="sticky bottom-0 z-30 bg-white/95 backdrop-blur-md border-t border-slate-100 px-4 py-2 flex items-center justify-around shadow-md">
+        <nav className="sticky bottom-0 z-30 bg-white/95 backdrop-blur-md border-t border-slate-100 px-4 py-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] flex items-center justify-around shadow-md shrink-0">
           {/* Tab 1: Beranda */}
           <button
             type="button"
