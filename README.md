@@ -1,20 +1,64 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# DompetKu — Budget Tracker Harian
 
-# Run and deploy your AI Studio app
+Aplikasi pelacak anggaran dan keuangan harian, dibuat dengan React + Vite + Tailwind CSS,
+dan sudah mendukung instalasi sebagai PWA (Progressive Web App) di Android.
 
-This contains everything you need to run your app locally.
+## Fitur
 
-View your app in AI Studio: https://ai.studio/apps/3a6ebe9f-eee4-41b7-abe5-16bf56f04bb1
+- Catat pemasukan & pengeluaran harian dengan kategori
+- Ringkasan saldo harian dan anggaran harian
+- Diagram analisis pengeluaran per kategori
+- Ekspor laporan ke CSV
+- Bisa diinstal di HP Android (berjalan fullscreen tanpa browser)
 
-## Run Locally
+## Menjalankan Secara Lokal
 
-**Prerequisites:**  Node.js
-
+**Prasyarat:** Node.js
 
 1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+   ```bash
+   npm install
+   ```
+2. (Opsional) set `GEMINI_API_KEY` di `.env.local` bila butuh fitur AI Gemini.
+3. Jalankan dev server:
+   ```bash
+   npm run dev
+   ```
+4. Buka http://localhost:3000
+
+## Build & Deploy
+
+```bash
+npm run build      # hasil di folder dist/
+npm run preview    # preview hasil build
+```
+
+Deploy otomatis via Netlify: setiap `git push` ke GitHub, Netlify menjalankan
+`npm run build` dan mempublish folder `dist`.
+
+## Penyimpanan Data (Saat Ini)
+
+Data masih disimpan di **localStorage** browser (lihat `src/App.tsx`):
+
+```typescript
+// Membaca data tersimpan saat inisialisasi
+const saved = localStorage.getItem(STORAGE_KEY);      // transaksi
+const savedBudget = localStorage.getItem(BUDGET_KEY); // anggaran harian
+
+// Menyimpan setiap ada perubahan
+localStorage.setItem(STORAGE_KEY, JSON.stringify(transactions));
+localStorage.setItem(BUDGET_KEY, String(dailyBudgetLimit));
+```
+
+> Catatan: data hanya tersimpan di browser/perangkat tersebut, tidak sinkron
+> antar perangkat, dan bisa hilang jika data situs dibersihkan.
+
+## Rencana Migrasi ke Google Sheets
+
+Versi mendatang akan memindahkan penyimpanan ke Google Sheets via Google Apps Script
+(Web App sebagai endpoint API), dengan `localStorage` tetap sebagai cache offline.
+
+Kode localStorage saat ini **akan dipertahankan** di branch utama, sedangkan migrasi
+dikerjakan di branch terpisah (`feature/google-sheets`).
+
+Lihat dokumen lengkap rencana migrasi: **[MIGRASI_GOOGLE_SHEETS.md](./MIGRASI_GOOGLE_SHEETS.md)**

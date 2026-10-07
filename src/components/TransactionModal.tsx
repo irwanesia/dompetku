@@ -154,7 +154,7 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
                 type="number"
                 inputMode="numeric"
                 min="1"
-                step="1000"
+                step="1"
                 placeholder="0"
                 value={amountStr}
                 onChange={(e) => {
